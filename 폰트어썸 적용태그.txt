@@ -1,0 +1,3 @@
+폰트 어썸 적용태그
+
+<script src="https://kit.fontawesome.com/87ca3cf952.js" crossorigin="anonymous"></script>

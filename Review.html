@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+
+    <!--구글 폰트 적용 1-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+
+    <!--구글 폰트 적용 2-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Kosugi+Maru&display=swap" rel="stylesheet">
+
+
+    
+
+    <!-- 폰트어썸(아이콘) 적용 -->
+    <script src="https://kit.fontawesome.com/87ca3cf952.js" crossorigin="anonymous"></script>
+
+    <!--stylesheet 연결-->
+    <style link="stylesheet" src="/style.css"></style>
+    
+
+</head>
+<body>
+    <div id="app">
+        <v-app>
+            <!--상단 네비게이션-->
+            <v-app-bar app height="100px" color="amber darken-1" dark elevation="0">
+                <v-app-bar-nav-icon @click="ndrawer=true">
+                </v-app-bar-nav-icon>
+                <v-spacer></v-spacer>
+                <v-toolbar-title floating
+                class=" overline" ><!--
+                        <i class="fa-solid fa-apple-whole"></i>-->
+                    <h1><a style="text-decoration:none" href="./index.html" class="white--text">
+                            Royal CAKE</a></h1>
+                  </v-toolbar-title>
+                  <v-spacer></v-spacer>
+                  <v-icon>mdi-cake</v-icon>
+                
+            </v-app-bar>
+
+            <!--앱 네비게이션 서랍 1 -->
+            <v-navigation-drawer fixed temporary v-model="ndrawer">
+                <v-toolbar flat height="100px" >
+                    <v-list>
+                        <v-list-item class="overline text-center">
+                            <v-list-item-avatar class="amber darken-1" size="40">
+                                <v-icon size="24" color="red">fa-solid fa-apple-whole</v-icon>
+                            </v-list-item-avatar>
+                            <v-list-item-content>
+                                <v-list-item-title><b>Royal CAKE</b></v-list-item-title>
+                                <v-list-item-subtitle>KHJ</v-list-item-subtitle>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-list>
+                </v-toolbar>
+
+                
+
+
+                <v-divider></v-divider>
+
+                <v-list>
+                    <v-list-item v-for="item in menuList" :href="item.link"> 
+                      
+                        <v-list-item-content>
+                            <v-list-item-title  class="overline text-center">
+                                <i class="fa-solid fa-quote-left"></i>
+                            {{item.title}}
+                                <i class="fa-solid fa-quote-right"></i>
+                            </v-list-item-title>
+                        </v-list-item-content>
+
+                    </v-list-item>
+                </v-list> 
+
+                
+                <v-divider></v-divider>
+                <v-list>
+                    <v-list-item class="overline">
+                        <v-list-item-content>
+                            <v-list-item-title>
+                                <p>Search</p>
+                            </v-list-item-title>
+                
+                            <input type="text" style="border : 1px solid black">
+                            <v-btn icon> 
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </v-btn>      
+                        </v-list-item-content>
+
+
+
+                    </v-list-item>
+                
+
+                </v-list>
+            </v-navigation-drawer> 
+
+
+                <!--여기서부터 본문 안 -->
+                <v-content>
+                    <v-container>
+                        <template>
+
+                                <v-col class="text-center orange--text" >
+                                    <h3>고객 리뷰 게시판</h3>
+                                </v-col>
+
+                                <!---구분선 1-->
+                                <v-divider></v-divider>
+                                
+                                <!---고객 리뷰 목록-->
+                                <v-col cols="12" sm="12">
+                                    <template>
+                        
+                                            <div class="d-flex flex-column pa-2">
+
+                                                <v-card 
+                                                v-for="(n,id) in reviewlist" 
+                                                :key="n" 
+                                                class="pa-2 ma-2" 
+                                                outlined
+                                                tile
+                                                >
+                                                <v-img :src="n.image" ></v-img>
+                                                    
+                                                
+                                                    <v-card-text>고객 리뷰 {{ n.id }}</v-card-text>
+                                                    
+                                                    
+                                                </v-card>
+                                            </div>
+                                      </template>
+                                </v-col>
+                                <v-col class="text-center">
+                                    <v-btn href="./input.html"
+                                    color="amber darken-3" dark
+                                    rounded
+                                    
+                                    class="mx-auto"
+                                    >리뷰 쓰기</v-btn>
+                                </v-col>
+
+
+
+
+                        </template>
+                    </v-container>
+                </v-content>
+    
+    
+            <v-footer color="amber darken-1" dark fixed>
+                <div class="mx-auto">Copyright &copy; KHJ</div>
+            </v-footer>
+        </v-app>
+        
+    
+        </div>
+
+
+
+
+
+            
+    <script>
+    
+        new Vue ({
+            el : "#app",
+            vuetify : new Vuetify(),
+            data: () => ({
+                model: null,
+                ndrawer : false,
+
+                //메뉴 서랍 리스트
+                menuList : [
+                    {title : " Information ",
+                    link: "./info.html"},
+
+                    {title : " Reservation ",
+                    link : "./Reservation.html"},
+
+                    {title : " Review ",
+                    link : "./Review.html"},
+
+                    {title : " EVENT ",
+                    link : "./event.html"},],
+
+                reviewlist : [
+                    {
+                        id : "1",
+                        image : "./01/img/review-1.jpg"
+                    },
+                    {
+                        id: "2",
+                        image: "./01/img/review-2.jpg"
+                    },
+                    {
+                        id: "3",
+                        image: "./01/img/review-3.jpg"
+                    },
+                
+                ],
+
+                    
+
+    
+            }),
+        })
+
+    </script>
+
+</body>
+</html>
